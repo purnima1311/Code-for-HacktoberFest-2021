@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int Search(int arr[], int first,int last, int key)
+{
+    if(last >= first) {
+    int mid = first + (last - 1) / 2;
+
+    if( arr[mid] == key)
+    return mid;
+
+    if(arr[mid] > key)
+    return Search(arr, first, mid -1,key);
+
+    if(arr[mid] < key)
+    return Search(arr,mid+1,last,key);
+
+    }
+    return -1;
+}
+
+
+int main()
+{
+    int arr[] = {4,13,2,5,1};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int key = 13;
+
+    int result = Search(arr, 0, n - 1, key);
+    (result == -1) ? cout << "Element is not present in array"
+                   : cout << "Element is present at index " << result;
+    return 0;
+}
